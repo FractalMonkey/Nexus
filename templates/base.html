@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Doom">
+        <meta name="keywords" content="doom">
+        <meta name="author" content="Un tío por ahí">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="cara.png">
+        <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+        <title>💠 Nexus</title>
+    </head>
+    <body>
+        <div class="global-container">
+            <div class="main-container">
+                <div class="header"></div>
+                <div class="content-container">
+                    <img src="{% static "header.gif" %}" alt="Text to display if image is not found">
+                    <ul class="nav">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="">Coding</a></li>
+                        <li><a href="">Music</a></li>
+                        <li><a href="{% url 'penumbra' %}">Penumbra</a></li>
+                        <li><a href="{% url 'guestbook' %}">Guestbook</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                    <div class = "body-container">
+                        {% block content %} 
+                    <!-- Content Goes here -->
+                        {% endblock content %}
+                    </div>
+                    <div class="footer"><a href="{% url 'home' %}sitemap.xml">Sitemap</a><br/>Fractal Network 2020</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html

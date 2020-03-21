@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="sidebar">&nbsp;</div>
+<div class="main-column">
+    <div class="tab-container">
+        <div class="tab-element">
+            <div class="tab-title">🐵 Feed the monkey</div>
+            <div class="tab-text">Your banana made the monkey very happy! Will you give him more?</div>
+            <div class="monkey-heart"><div class="bounce">💕</div></div>
+            <div class="monkey">🐒</div>
+            <div class="monkey-button">
+                <button onclick="window.location.href = '{{ BASE_URL }}';">🍌 Give banana</button> 
+            </div>
+            <center><div class="tab-text">The monkey has got <b>{{bananas}} bananas</b> so far.</div></center>
+        </div>
+    </div>
+</div>
+<div class="sidebar">&nbsp;</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+      
+{% block content %}
+<div class="sidebar">&nbsp;</div>
+<div class="main-column">
+    <div class="tab-container">
+        <div class="tab-element">
+            <div class="tab-title">🌍 Last updates</div>
+            {% for post in posts %}
+                <div class="tab-date">{{ post.created_on}}</div>
+                <div class="tab-text">{{post.content}}</div>
+            {% endfor %}
+            {% include "pagination.html" with page=page_obj %}
+        </div>
+    </div>
+</div>
+<div class="sidebar">
+     <div class="tab-container">
+        <div class="tab-sidebar-element">
+            <div class="tab-title">🐵 Feed the monkey</div>
+            <div class="tab-text">
+                Give bananas to the monkey to help him increase his prosperity.
+                <br /><br /><div class="monkey">🐒</div>
+                <div class="monkey-button">
+                    <form method="get" action="{% url "banana" %}">
+                        <button type="submit">🍌 Give banana</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

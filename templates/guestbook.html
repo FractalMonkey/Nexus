@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="sidebar">&nbsp;</div>
+<div class="main-column">
+    <div class="tab-container">
+        <div class="tab-element">
+            <div class="tab-title">📔 Guestbook</div>
+            <div class="tab-text">
+                Would you like to sign the guestbook before leaving? 🙃<br />
+                <form class="form-signin" method='POST', action='{% url 'guestbook' %}'>
+                    {% csrf_token %} <!-- Cross Site Request Forgery protection -->
+                    {{ form.as_p }}
+                    <div class="monkey-button"><button type="submit">🖋 Sign</button></div>
+                </form>
+            </div>
+                    {% for comment in comments %}
+                        
+                            <div class="tab-date"><b>{{ comment.name}}</b> at {{ comment.date_added}}</div>
+                            <div class="tab-text">{{comment.comment}}</div>
+                        
+                    {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="sidebar">&nbsp;</div>
+{% endblock content %}
