@@ -1,3 +1,6 @@
+## 0.4
+- Weather panel
+
 ## 0.3
 - Monkey clicker game
 

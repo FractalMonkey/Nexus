@@ -1,6 +1,4 @@
-nexus/__pycache__/*
 static/
 db.sqlite3
-core/__pycache__/*
-core/migrations/__pycache__/*
 nexus/settings.py
+*.pyc

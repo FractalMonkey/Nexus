@@ -1,11 +1,25 @@
 {% extends "base.html" %}
-      
+{% load general %}
+{% load static %}
+
 {% block content %}
-<div class="sidebar">&nbsp;</div>
+<div class="sidebar">
+     <div class="tab-container">
+        <div class="tab-sidebar-element">
+            <div class="tab-title">🌞 Weather data</div>
+            <div class="tab-text">
+                <center>Currently at<br />
+                🗿 <b>Eastern Island</b>:<br />
+                <img src="{% get_static_prefix %}{% GetWeatherStatus %}" width="50%" height="50%"/>
+                <br />Temp: {% GetTemp %}</center>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="main-column">
     <div class="tab-container">
         <div class="tab-element">
-            <div class="tab-title">🌍 Last updates</div>
+            <div class="tab-title">📰 Last u{{test}}pdates</div>
             {% for post in posts %}
                 <div class="tab-date">{{ post.created_on}}</div>
                 <div class="tab-text">{{post.content}}</div>

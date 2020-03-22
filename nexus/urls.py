@@ -30,3 +30,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [url(r'^captcha/', include('captcha.urls')),]
+
+admin.site.site_header = "Nexus Labs"
+admin.site.site_title = "Nexus Labs"
+admin.site.index_title = "Welcome to the Nexus Labs."
