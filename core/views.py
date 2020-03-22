@@ -72,7 +72,7 @@ def GiveBanana(request):
         last_goal = 500
     m.save()
     remaining = goal - m.bananas
-    progress = (m.bananas - last_goal) * 100 / goal
+    progress = ((m.bananas - last_goal) * 100) / (goal - last_goal)
     return render(request, "banana.html", {'bananas': m.bananas, 'level': m.level, 'goal': remaining, 'progress': progress})
 
 def GuestbookPage(request):
