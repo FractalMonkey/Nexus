@@ -47,11 +47,33 @@ def GiveBanana(request):
     if Monkey.objects.first() == None:
         new_monkey = Monkey()
         new_monkey.save()
-    b = Monkey.objects.first()
-    b.bananas += 1
-    b.save()
-    bananas = b.bananas
-    return render(request, "banana.html", {'bananas': b.bananas})
+    m = Monkey.objects.first()
+    m.bananas += 1
+    goal = 25
+    if m.bananas < 25:
+        m.level = 1
+        goal = 25
+        last_goal = 0
+    elif m.bananas < 100:
+        m.level = 2
+        goal = 100
+        last_goal = 25
+    elif m.bananas < 250:
+        m.level = 3
+        goal = 250
+        last_goal = 100
+    elif m.bananas < 500:
+        m.level = 4
+        goal = 500
+        last_goal = 250
+    elif m.bananas < 1000:
+        m.level = 5
+        goal = 1000
+        last_goal = 500
+    m.save()
+    remaining = goal - m.bananas
+    progress = (m.bananas - last_goal) * 100 / goal
+    return render(request, "banana.html", {'bananas': m.bananas, 'level': m.level, 'goal': remaining, 'progress': progress})
 
 def GuestbookPage(request):
     if request.method == 'POST':

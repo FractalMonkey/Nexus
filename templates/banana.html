@@ -7,11 +7,15 @@
             <div class="tab-title">🐵 Feed the monkey</div>
             <div class="tab-text">Your banana made the monkey very happy! Will you give him more?</div>
             <div class="monkey-heart"><div class="bounce">💕</div></div>
-            <div class="monkey">🐒</div>
+            <div class="monkey"><span style="font-size: 16px;">🌴</span>🐒<span style="font-size: 16px;">🌴</span></div>
             <div class="monkey-button">
                 <button onclick="window.location.href = '{{ BASE_URL }}';">🍌 Give banana</button> 
             </div>
-            <center><div class="tab-text">The monkey has got <b>{{bananas}} bananas</b> so far.</div></center>
+            <center><div class="tab-text">The monkey has got <b>{{bananas}} bananas</b> so far.<br />He still needs {{goal}} bananas to level up.</div></center>
+            <div class="meter">
+			    <span style="width: {{progress}}%"></span>
+		    </div>
+            <center><div class="tab-text">Current level: <span style="font-size: 26px;">{{level}}</span></div></center>
         </div>
     </div>
 </div>

@@ -1,3 +1,6 @@
+## 0.3
+- Monkey clicker game
+
 ## 0.2
 - Guestbook
 - Captcha
