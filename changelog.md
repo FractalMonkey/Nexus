@@ -1,3 +1,6 @@
+## 0.5
+- Auth system
+
 ## 0.4
 - Weather panel
 

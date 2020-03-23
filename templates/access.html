@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="sidebar">
+    {% include "login-form.html" %}
+</div>
+<div class="main-column">
+    <div class="tab-container">
+        <div class="tab-element">
+            <div class="tab-title">🔓 Access</div>
+            <div class="tab-text">
+                {% if result == 1 %}
+                    You have been successfully identified, welcome!
+                {% elif result == 0 %}
+                    You entered wrong credentials, please try again.
+                {% elif result == 3 %}
+                    You have logged out from your account.
+                                {% else %}
+                    Access disabled.
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sidebar">&nbsp;</div>
+{% endblock %}

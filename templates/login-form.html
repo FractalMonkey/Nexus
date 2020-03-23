@@ -1,0 +1,24 @@
+<div class="tab-container">
+    <div class="tab-sidebar-element">
+        <div class="tab-title">
+            {% if request.user.is_authenticated %}
+                👩‍💻 User
+            {% else %}
+                🔎 Login
+            {% endif %}
+        </div>
+        <div class="tab-text">
+            {% if request.user.is_authenticated %}
+                Welcome back, <b>{{ request.user.username }}</b>!
+                <br /><center><span style="font-size:11px;;"><a href="{% url 'logout' %}">Logout</a></span></center>
+            {% else %}
+            <form action = '{% url 'access' %}' method='POST'>
+                {% csrf_token %} <!-- Cross Site Request Forgery protection -->
+                <input type='text' name='username' placeholder="Username" id="textarea-mini">
+                <input type='password' name='password' placeholder="Password" id="textarea-mini">
+                <center><button type="submit">🔓 Access</button></center>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>

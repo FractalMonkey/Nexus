@@ -4,25 +4,15 @@
 
 {% block content %}
 <div class="sidebar">
-     <div class="tab-container">
-        <div class="tab-sidebar-element">
-            <div class="tab-title">🌞 Weather data</div>
-            <div class="tab-text">
-                <center>Currently at<br />
-                🗿 <b>Eastern Island</b>:<br />
-                <img src="{% get_static_prefix %}{% GetWeatherStatus %}" width="50%" height="50%"/>
-                <br />Temp: {% GetTemp %}</center>
-            </div>
-        </div>
-    </div>
+    {% include "login-form.html" %}
 </div>
 <div class="main-column">
     <div class="tab-container">
         <div class="tab-element">
-            <div class="tab-title">📰 Last u{{test}}pdates</div>
+            <div class="tab-title">📰 Last updates</div>
             {% for post in posts %}
                 <div class="tab-date">{{ post.created_on}}</div>
-                <div class="tab-text">{{post.content}}</div>
+                <div class="tab-text">{{post.content|safe}}</div>
             {% endfor %}
             {% include "pagination.html" with page=page_obj %}
         </div>
@@ -40,6 +30,18 @@
                         <button type="submit">🍌 Give banana</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+     <div class="tab-container">
+        <div class="tab-sidebar-element">
+            <div class="tab-title">🌞 Weather data</div>
+            <div class="tab-text">
+                <center>Currently at<br />
+                🗿 <b>Eastern Island</b>:<br />
+                <img src="{% get_static_prefix %}{% GetWeatherStatus %}" width="50%" height="50%"/>
+                <br /><img src="{% static "desert_island.png" %}" width="32px" height="32px" />
+                <br />Temp: {% GetTemp %}</center>
             </div>
         </div>
     </div>

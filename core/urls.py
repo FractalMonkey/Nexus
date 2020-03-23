@@ -10,5 +10,7 @@ urlpatterns = [
     path('penumbra/', views.PenumbraPage, name='penumbra'),
     path('success/', views.SuccessPage, name='success'),
     path('banana/', views.GiveBanana, name='banana'),
+    path('access/', views.Login, name='access'),
+    path('logout/', views.Logout, name='logout'),
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
 ]

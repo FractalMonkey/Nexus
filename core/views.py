@@ -4,9 +4,10 @@ from .models import Post, Monkey, Comment
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from .forms import ContactForm, GuestForm
+from .forms import ContactForm, GuestForm, LoginForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from captcha.fields import CaptchaField
+from django.contrib.auth import authenticate, login, logout
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
@@ -86,3 +87,25 @@ def GuestbookPage(request):
         form = GuestForm()
     comments = Comment.objects.all().order_by('-date_added')
     return render(request, 'guestbook.html', { 'form': form, 'comments': comments })
+
+def Login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request, username=cd['username'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return render(request, 'access.html', { 'result': 1 })
+                else:
+                    return render(request, 'access.html', { 'result': 2 })
+            else:
+                return render(request, 'access.html', { 'result': 0 })
+    else:
+        form = LoginForm()
+    return render(request, 'access.html', { 'result': 2 })
+
+def Logout(request):
+    logout(request)
+    return render(request, 'access.html', { 'result': 3 })
