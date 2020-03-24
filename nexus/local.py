@@ -20,9 +20,6 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '%$nwxhwh#^nvhjl4xqzsjb2t-=ez_!r^cf+6&pe$x3j4ka+8a*'
 
@@ -42,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'captcha'
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +115,4 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+

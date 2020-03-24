@@ -1,3 +1,6 @@
+## 0.6
+- Codex implemented
+
 ## 0.5
 - Auth system
 

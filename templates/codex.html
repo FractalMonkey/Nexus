@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load general %}
 {% block content %}
 <div class="sidebar">
     {% include "login-form.html" %}
@@ -6,10 +7,35 @@
 <div class="main-column">
     <div class="tab-container">
         <div class="tab-element">
-            <div class="tab-title">About</div>
-            <div class="tab-text">You have entered <b>the Nexus</b>, a remote, forgotten place where Django tests are performed and personal offerings are available to the wandering traveller.</div>
+            {% if request.user.is_authenticated %}
+                <div class="tab-title">📜 {{name|slice:":-3"}}</div>
+                <div class="tab-text">
+                    {{md|markdown}}
+                </div>
+            {% else %}
+                <div class="tab-title">⛔ Access forbidden</div>
+                <div class="tab-text">
+                    Due to copyright this area is only available to registered members.
+                </div>
+            {% endif %}        
         </div>
     </div>
 </div>
-<div class="sidebar">&nbsp;</div>
+<div class="sidebar">
+    {% if request.user.is_authenticated %}
+        <div class="tab-container">
+            <div class="tab-sidebar-element">
+                <div class="tab-title">📚 Index</div>
+                <div class="tab-text">
+                        {% for file in files %}
+                            <a href="{% url 'codex' file=file %}">{{file|slice:":-3"}}</a><br />
+                        {% endfor %}
+                    </ul>                
+                </div>
+            </div>
+        </div>
+    {% else %}
+        &nbsp;
+    {% endif %}
+</div>
 {% endblock %}

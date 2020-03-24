@@ -1,5 +1,5 @@
 from . import views
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.urls import path
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path('banana/', views.GiveBanana, name='banana'),
     path('access/', views.Login, name='access'),
     path('logout/', views.Logout, name='logout'),
+    path('codex/<str:file>', views.CodexIndex, name='codex'),
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
 ]

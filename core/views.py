@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.views import generic
 from django.views.generic import TemplateView
 from .models import Post, Monkey, Comment
@@ -8,6 +9,8 @@ from .forms import ContactForm, GuestForm, LoginForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from captcha.fields import CaptchaField
 from django.contrib.auth import authenticate, login, logout
+import os
+import io
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
@@ -109,3 +112,11 @@ def Login(request):
 def Logout(request):
     logout(request)
     return render(request, 'access.html', { 'result': 3 })
+
+def CodexIndex(request, file):
+    files = os.listdir(os.path.join(settings.BASE_DIR, 'codex/'))
+    md = io.open(os.path.join(settings.BASE_DIR, 'codex\\')+file, mode="r", encoding="utf-8")
+    string = md.read()
+    md.close()
+
+    return render(request, 'codex.html', {'md':string, 'name': file, 'files': files})

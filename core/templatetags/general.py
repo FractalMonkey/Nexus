@@ -1,5 +1,7 @@
 from django import template
 import pyowm
+from django.utils.safestring import mark_safe
+import markdown
 
 register = template.Library()
 
@@ -21,3 +23,7 @@ def GetWeatherStatus():
     elif weather.get_status() == "Rain":
         w = "weather_rain.png"
     return w
+
+@register.filter(name='markdown')
+def MarkdownFormat(text):
+    return mark_safe(markdown.markdown(text))
