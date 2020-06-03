@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.views import generic
 from django.views.generic import TemplateView
-from .models import Post, Monkey, Comment
+from .models import Post, Monkey, Comment, Project
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -16,14 +16,18 @@ class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     context_object_name = 'posts'
     paginate_by = 4
-    template_name = 'index.html'
+    template_name = 'blog.html'
 
 class PostDetail(generic.DetailView):
     model = Post
     template_name = 'post_detail.html'
 
-class AboutPage(TemplateView):
-    template_name = "about.html"
+class HomePage(TemplateView):
+    template_name = "home.html"
+
+def CodingPage(request):
+    projects = Project.objects.all()
+    return render(request, "coding.html", {'projects': projects})
 
 def PenumbraPage(request):
     return render(request, "penumbra.html")
@@ -115,7 +119,7 @@ def Logout(request):
 
 def CodexIndex(request, file):
     files = os.listdir(os.path.join(settings.BASE_DIR, 'codex/'))
-    md = io.open(os.path.join(settings.BASE_DIR, 'codex\\')+file, mode="r", encoding="utf-8")
+    md = io.open(settings.CODEX_PATH+file, mode="r", encoding="utf-8")
     string = md.read()
     md.close()
 

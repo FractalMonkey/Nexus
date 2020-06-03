@@ -19,6 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+CODEX_PATH = os.path.join(BASE_DIR, 'codex\\')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '%$nwxhwh#^nvhjl4xqzsjb2t-=ez_!r^cf+6&pe$x3j4ka+8a*'
@@ -27,7 +28,6 @@ SECRET_KEY = '%$nwxhwh#^nvhjl4xqzsjb2t-=ez_!r^cf+6&pe$x3j4ka+8a*'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 

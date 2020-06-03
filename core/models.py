@@ -26,6 +26,17 @@ class Post(models.Model):
     def get_absolute_url(self):
         return "/post/%i/" % self.id
 
+class Project(models.Model):
+    slug = models.SlugField(max_length=200, unique=True)
+    name = models.CharField(max_length=200, unique=True)
+    description = models.TextField()
+    download = models.CharField(max_length=300)
+
+    class Meta:
+        ordering = ['slug']
+
+    def __str__(self):
+        return self.name
 
 class ContactForm(forms.Form):
     from_email = forms.EmailField(required=True)

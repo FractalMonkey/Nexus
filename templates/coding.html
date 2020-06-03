@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="sidebar">
+    {% include "login-form.html" %}
+</div>
+<div class="main-column">
+    {% for project in projects %}
+        <div class="tab-container">
+            <div class="tab-element">
+                <div class="tab-title">{{project.name}}</div>
+                <div class="tab-text">
+                    {{project.description}}
+                    <div class="code-block">{{project.download}}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="sidebar">
+    <div class="tab-container">
+        <div class="tab-sidebar-element">
+            <div class="tab-title">💬 About</div>
+            <div class="tab-text">
+                These are some programming projects that I have worked on.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

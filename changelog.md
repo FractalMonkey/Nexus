@@ -1,3 +1,6 @@
+## 0.7
+- New structure
+
 ## 0.6
 - Codex implemented
 

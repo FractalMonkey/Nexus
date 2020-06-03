@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load general %}
+{% load static %}
+
+{% block content %}
+<div class="sidebar">
+&nbsp;
+</div>
+<div class="main-column">
+    <div class="tab-container">
+        <div class="tab-element">
+            <div class="tab-title">📰 Last updates</div>
+            {% for post in posts %}
+                <div class="tab-date">{{ post.created_on}}</div>
+                <div class="tab-text-blog">{{post.content|safe}}</div>
+            {% endfor %}
+            {% include "pagination.html" with page=page_obj %}
+        </div>
+    </div>
+</div>
+<div class="sidebar">
+&nbsp;
+</div>
+
+{% endblock %}

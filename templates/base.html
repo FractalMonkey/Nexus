@@ -19,8 +19,8 @@
                     <img src="{% static "header.gif" %}" alt="Text to display if image is not found">
                     <ul class="nav">
                         <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'about' %}">About</a></li>
-                        <li><a href="">Coding</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li><a href="{% url 'coding' %}">Coding</a></li>
                         <li><a href="{% url 'codex' file='welcome.md' %}">Codex</a></li>
                         <li><a href="{% url 'penumbra' %}">Penumbra</a></li>
                         <li><a href="{% url 'guestbook' %}">Guestbook</a></li>
@@ -31,7 +31,7 @@
                     <!-- Content Goes here -->
                         {% endblock content %}
                     </div>
-                    <div class="footer"><a href="{% url 'home' %}sitemap.xml">Sitemap</a><br/>José Maestre 2020<br />All work licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></div>
+                    <div class="footer"><a href="{% url 'home' %}sitemap.xml">Sitemap</a><br/>Fractal Network<br />All work licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></div>
                 </div>
             </div>
         </div>

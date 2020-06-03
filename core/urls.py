@@ -3,8 +3,9 @@ from django.conf.urls import url, include
 from django.urls import path
 
 urlpatterns = [
-    path('', views.PostList.as_view(), name='home'),
-    path('about/', views.AboutPage.as_view(), name='about'),
+    path('blog/', views.PostList.as_view(), name='blog'),
+    path('', views.HomePage.as_view(), name='home'),
+    path('coding/', views.CodingPage, name='coding'),
     path('contact/', views.ContactPage, name='contact'),
     path('guestbook/', views.GuestbookPage, name='guestbook'),
     path('penumbra/', views.PenumbraPage, name='penumbra'),

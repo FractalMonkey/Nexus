@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="sidebar">
+    <div class="tab-container">
+        <div class="tab-sidebar-element">
+            <div class="tab-title">💬 About</div>
+            <div class="tab-text">
+                These are some music tracks that I have worked on.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-column">
+    {% for track in tracks %}
+        <div class="tab-container">
+            <div class="tab-element">
+                <div class="tab-title">💾 {{track.name}}</div>
+                <div class="tab-text">
+                    {{track.description}}
+                    <audio controls>
+                        <source src="{{track.file}}" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="sidebar">
+&nbsp;
+</div>
+{% endblock %}
