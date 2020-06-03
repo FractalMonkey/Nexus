@@ -118,9 +118,8 @@ def Logout(request):
     return render(request, 'access.html', { 'result': 3 })
 
 def CodexIndex(request, file):
-    files = os.listdir(os.path.join(settings.BASE_DIR, 'codex/'))
+    files = sorted(f for f in (os.listdir(os.path.join(settings.BASE_DIR, 'codex/'))) if f.endswith('.md'))
     md = io.open(settings.CODEX_PATH+file, mode="r", encoding="utf-8")
     string = md.read()
     md.close()
-
     return render(request, 'codex.html', {'md':string, 'name': file, 'files': files})

@@ -1,3 +1,6 @@
+## 0.8
+- Templates updated
+
 ## 0.7
 - New structure
 

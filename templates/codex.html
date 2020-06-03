@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load general %}
+{% load static %}
 {% block content %}
 <div class="sidebar">
     {% include "login-form.html" %}
@@ -15,7 +16,7 @@
             {% else %}
                 <div class="tab-title">⛔ Access forbidden</div>
                 <div class="tab-text">
-                    Due to copyright this area is only available to registered members.
+                    This area is only available to authenticated users.
                 </div>
             {% endif %}        
         </div>
@@ -26,9 +27,9 @@
         <div class="tab-container">
             <div class="tab-sidebar-element">
                 <div class="tab-title">📚 Index</div>
-                <div class="tab-text">
+                <div class="tab-text"><ul>
                         {% for file in files %}
-                            <a href="{% url 'codex' file=file %}">{{file|slice:":-3"}}</a><br />
+                            <li><a href="{% url 'codex' file=file %}">{{file|slice:":-3"}}</a></li>
                         {% endfor %}
                     </ul>                
                 </div>

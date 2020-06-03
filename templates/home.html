@@ -1,15 +1,43 @@
 {% extends "base.html" %}
 {% block content %}
+{% load general %}
+{% load static %}
 <div class="sidebar">
-    {% include "login-form.html" %}
+     <div class="tab-container">
+        <div class="tab-sidebar-element">
+            <div class="tab-title">🐵 Feed the monkey</div>
+            <div class="tab-text">
+                Give bananas to the monkey to help him increase his prosperity.
+                <br /><br /><div class="monkey">🐒</div>
+                <div class="monkey-button">
+                    <form method="get" action="{% url "banana" %}">
+                        <button type="submit">🍌 Give banana</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="main-column">
     <div class="tab-container">
         <div class="tab-element">
             <div class="tab-title">About</div>
-            <div class="tab-text">You have entered <b>the Nexus</b>, a remote, forgotten place where Django tests are performed and personal offerings are available to the wandering traveller. Please mind the void.</div>
+            <div class="tab-text">You have entered <b>the Nexus</b>, a remote, forgotten place where personal offerings are available to the wandering traveller.</div>
         </div>
     </div>
 </div>
-<div class="sidebar">&nbsp;</div>
+<div class="sidebar">
+     <div class="tab-container">
+        <div class="tab-sidebar-element">
+            <div class="tab-title">🌞 Weather data</div>
+            <div class="tab-text">
+                <center>Currently at<br />
+                🗿 <b>Eastern Island</b>:<br />
+                <img src="{% get_static_prefix %}{% GetWeatherStatus %}" width="50%" height="50%"/>
+                <br /><img src="{% static "desert_island.png" %}" width="32px" height="32px" />
+                <br />Temp: {% GetTemp %}</center>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
