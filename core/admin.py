@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Project
+from .models import Post, Project, Track
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'status','created_on')
@@ -9,3 +9,4 @@ class PostAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Project)
+admin.site.register(Track)

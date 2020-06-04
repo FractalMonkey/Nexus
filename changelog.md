@@ -1,3 +1,7 @@
+## 0.9
+- Music page added
+- Media serving config
+
 ## 0.8
 - Templates updated
 

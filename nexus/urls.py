@@ -18,6 +18,8 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.sitemaps.views import sitemap
 from core.sitemaps import PostSitemap
+from django.conf import settings
+from django.conf.urls.static import static
 
 sitemaps = {
     'posts': PostSitemap,
@@ -30,6 +32,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [url(r'^captcha/', include('captcha.urls')),]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "Nexus Labs"
 admin.site.site_title = "Nexus Labs"

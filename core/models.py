@@ -38,6 +38,18 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
+class Track(models.Model):
+    slug = models.SlugField(max_length=200, unique=True)
+    name = models.CharField(max_length=200, unique=True)
+    description = models.TextField()
+    file = models.FileField(default="none")
+
+    class Meta:
+        ordering = ['slug']
+
+    def __str__(self):
+        return self.name
+
 class ContactForm(forms.Form):
     from_email = forms.EmailField(required=True)
     subject = forms.CharField(required=True)

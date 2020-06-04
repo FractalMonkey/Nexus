@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.views import generic
 from django.views.generic import TemplateView
-from .models import Post, Monkey, Comment, Project
+from .models import Post, Monkey, Comment, Project, Track
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -28,6 +28,10 @@ class HomePage(TemplateView):
 def CodingPage(request):
     projects = Project.objects.all()
     return render(request, "coding.html", {'projects': projects})
+
+def MusicPage(request):
+    tracks = Track.objects.all().order_by('-slug')
+    return render(request, "music.html", {'tracks': tracks})
 
 def PenumbraPage(request):
     return render(request, "penumbra.html")
