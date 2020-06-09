@@ -1,3 +1,6 @@
+## 0.10
+- Penumbra page added
+
 ## 0.9
 - Music page added
 - Media serving config

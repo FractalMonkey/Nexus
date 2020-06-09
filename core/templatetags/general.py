@@ -2,6 +2,7 @@ from django import template
 import pyowm
 from django.utils.safestring import mark_safe
 import markdown
+import randfacts
 
 register = template.Library()
 
@@ -23,6 +24,11 @@ def GetWeatherStatus():
     elif weather.get_status() == "Rain":
         w = "weather_rain.png"
     return w
+
+@register.simple_tag
+def GetRandomFact():
+    r = randfacts.getFact()
+    return r
 
 @register.filter(name='markdown')
 def MarkdownFormat(text):
