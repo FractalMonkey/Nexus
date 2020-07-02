@@ -7,3 +7,5 @@ core/migrations/0002_project.py
 core/migrations/0003_auto_20200325_0743.py
 codex/
 media/
+penumbra/__init__.py
+penumbra/migrations/__init__.py

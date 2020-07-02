@@ -1,3 +1,6 @@
+## 0.11
+- Codex page added
+
 ## 0.10
 - Penumbra page added
 

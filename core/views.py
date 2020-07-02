@@ -9,8 +9,7 @@ from .forms import ContactForm, GuestForm, LoginForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from captcha.fields import CaptchaField
 from django.contrib.auth import authenticate, login, logout
-import os
-import io
+import os, io
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
@@ -32,6 +31,13 @@ def CodingPage(request):
 def MusicPage(request):
     tracks = Track.objects.all().order_by('-slug')
     return render(request, "music.html", {'tracks': tracks})
+
+def CodexIndex(request, file):
+    files = sorted(f for f in (os.listdir(os.path.join(settings.BASE_DIR, 'codex/'))) if f.endswith('.md'))
+    md = io.open(settings.CODEX_PATH+file, mode="r", encoding="utf-8")
+    string = md.read()
+    md.close()
+    return render(request, 'codex.html', {'md':string, 'name': file, 'files': files})
 
 def PenumbraPage(request):
     return render(request, "penumbra.html")
@@ -120,10 +126,3 @@ def Login(request):
 def Logout(request):
     logout(request)
     return render(request, 'access.html', { 'result': 3 })
-
-def CodexIndex(request, file):
-    files = sorted(f for f in (os.listdir(os.path.join(settings.BASE_DIR, 'codex/'))) if f.endswith('.md'))
-    md = io.open(settings.CODEX_PATH+file, mode="r", encoding="utf-8")
-    string = md.read()
-    md.close()
-    return render(request, 'codex.html', {'md':string, 'name': file, 'files': files})

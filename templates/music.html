@@ -3,9 +3,13 @@
 <div class="sidebar">
     <div class="tab-container">
         <div class="tab-sidebar-element">
-            <div class="tab-title">💬 About</div>
+            <div class="tab-title">💿 Tracks</div>
             <div class="tab-text"> 
-                These are some music tracks that I have worked on.
+                <ul>
+                        {% for track in tracks %}
+                            <li><a href="">{{track.name}}</a></li>
+                        {% endfor %}
+                </ul>  
             </div>
         </div>
     </div>

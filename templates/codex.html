@@ -1,42 +1,48 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
 {% load general %}
 {% load static %}
 {% block content %}
-<div class="sidebar">
-    {% include "login-form.html" %}
-</div>
-<div class="main-column">
-    <div class="tab-container">
-        <div class="tab-element">
-            {% if request.user.is_authenticated %}
-                <div class="tab-title">📜 {{name|slice:":-3"}}</div>
-                <div class="tab-text">
-                    {{md|markdown}}
-                </div>
-            {% else %}
-                <div class="tab-title">⛔ Access forbidden</div>
-                <div class="tab-text">
-                    This area is only available to authenticated users.
-                </div>
-            {% endif %}        
-        </div>
-    </div>
-</div>
-<div class="sidebar">
-    {% if request.user.is_authenticated %}
-        <div class="tab-container">
-            <div class="tab-sidebar-element">
-                <div class="tab-title">📚 Index</div>
-                <div class="tab-text"><ul>
-                        {% for file in files %}
-                            <li><a href="{% url 'codex' file=file %}">{{file|slice:":-3"}}</a></li>
-                        {% endfor %}
-                    </ul>                
-                </div>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Codex">
+        <meta name="keywords" content="codex">
+        <meta name="author" content="Un tío por ahí">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="cara.png">
+        <link rel="stylesheet" type="text/css" href="{% static "style-codex.css" %}">
+        <title>📜 Codex</title>
+    </head>
+    <body>
+      <div class="wrapper">
+        <div class="content-wrapper">
+          <div class="content">
+            <div class="content-in">
+              {% if request.user.is_authenticated %}
+                <h2>{{name|slice:":-3"}}</h2>
+                {{md|markdown}}
+              {% else %}
+                <h2>⛔ Access forbidden</h2>
+                <p>This area is only available to authenticated users.</p>
+            {% endif %} 
             </div>
+          </div>
         </div>
-    {% else %}
-        &nbsp;
-    {% endif %}
-</div>
+        <div class="sidebar">
+          <div class="sidebar-in">
+            <h1>📜 Codex</h1>
+            {% if request.user.is_authenticated %}
+              <ul>
+                {% for file in files %}
+                  <li><a href="{% url 'codex' file=file %}">{{file|slice:":-3"}}</a></li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              {% include "login-form.html" %}
+            {% endif %} 
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
 {% endblock %}
